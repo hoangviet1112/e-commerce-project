@@ -5,15 +5,27 @@ import { Homepage } from './pages/homepage/Homepage';
 import { Shoppage } from './pages/shoppage/Shoppage';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up-page/SignInAndSignUpPage';
 import {useState, useEffect} from "react"
-import { auth } from './firebase-config';
+import { auth, createUserProfileDocument } from './firebase-config';
 
 function App() {
   
   const [user, setUser] = useState(null)
 
   useEffect(() => {
-    const unSubscribeFromAuth = auth.onAuthStateChanged(currentUser => {
-      setUser(currentUser);
+    const unSubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth)
+
+        userRef.onSnapshot(snapshot => {
+          setUser({
+            currentUser: {
+              id: snapshot.id,
+              ...snapshot.data()
+            }
+          })
+        })
+      }
+      setUser(userAuth)  
       return () => {
         unSubscribeFromAuth()
       }
