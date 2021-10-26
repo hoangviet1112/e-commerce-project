@@ -3,10 +3,10 @@ import "../sign-in/sign-in.scss"
 import { useState } from 'react'
 import InputForm from '../form-input/form-input'
 import CustomButton from '../custom-button/custom-button'
-import { signInWithGoogle } from '../../firebase/firebase.utils'
+import { signInWithGoogle } from '../../firebase-config'
 
-const SignIn = () => {
 
+const SignIn = () => {    
     const [profile, setProfile] = useState({
         email: "",
         password: ""
@@ -19,9 +19,7 @@ const SignIn = () => {
                 ...prevValue,
                 [name]: value
             }
-        })
-        console.log("Email is: " + profile.email);
-        console.log("Password is: " + profile.password);    
+        })   
     }
 
     function handleSubmit(event) {
@@ -40,9 +38,11 @@ const SignIn = () => {
             <form onSubmit={handleSubmit}>
                 <InputForm label="email" onChange={handleChange} type="email" name="email" value={profile.email} required />
                 <InputForm label="password" onChange={handleChange} type="password" name="password" value={profile.password} required />
-
-                <CustomButton type="submit">Sign in</CustomButton>
-                <CustomButton onClick={signInWithGoogle}>Sign in with Google</CustomButton>
+                
+                <div className="buttons">
+                    <CustomButton type="submit">Sign in</CustomButton>
+                    <CustomButton onClick={signInWithGoogle} isGoogleSignIn>Sign in with Google</CustomButton>
+                </div>
             </form>
         </div>
     )
