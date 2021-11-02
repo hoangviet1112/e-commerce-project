@@ -36,7 +36,13 @@ const SignIn = () => {
             <span>Sign in with your email and password</span>
 
             <form onSubmit={handleSubmit}>
-                <InputForm label="email" onChange={handleChange} type="email" name="email" value={profile.email} required />
+                <InputForm 
+                label="email" 
+                onChange={handleChange} 
+                type="email" 
+                name="email" 
+                value={profile.email} 
+                required />
                 <InputForm label="password" onChange={handleChange} type="password" name="password" value={profile.password} required />
                 
                 <div className="buttons">
