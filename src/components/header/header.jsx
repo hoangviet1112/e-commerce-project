@@ -5,7 +5,7 @@ import {ReactComponent as Logo} from "../../assets/crown.svg"
 import { auth } from '../../firebase-config'
 import { useSelector } from 'react-redux'
 import CartIcon from '../cart-icon/cart-icon'
-import CartDropdown from '../cart/cart-dropdown/cart-dropdown'
+import CartDropdown from '../cart-dropdown/cart-dropdown'
 
 
 const Header = () => {

@@ -1,8 +1,8 @@
-import "../cart-dropdown/cart-dropdown.scss"
+import "./cart-dropdown.scss"
 import { useSelector } from "react-redux"
 import React from "react"
-import CustomButton from "../../custom-button/custom-button"
-import CartItem from "../../cart-item/cart-item"
+import CustomButton from "../custom-button/custom-button"
+import CartItem from "../cart-item/cart-item"
 
 const CartDropdown = () => {
     const cartItems = useSelector(state => state.cart.cartItems)
