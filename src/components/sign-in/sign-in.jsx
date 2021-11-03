@@ -4,6 +4,9 @@ import { useState } from 'react'
 import InputForm from '../form-input/form-input'
 import CustomButton from '../custom-button/custom-button'
 import { signInWithGoogle } from '../../firebase-config'
+import { auth } from '../../firebase-config'
+import { setCurrentUser } from '../../redux/user/user.action'
+import { useDispatch } from 'react-redux'
 
 
 const SignIn = () => {    
@@ -11,6 +14,8 @@ const SignIn = () => {
         email: "",
         password: ""
     })
+
+    const dispatch = useDispatch()
 
     function handleChange(event) {
         const {name, value} = event.target;
@@ -22,12 +27,19 @@ const SignIn = () => {
         })   
     }
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault()
-        setProfile({
-            email: "",
-            password: ""
-        })
+        try {
+            const signInedUser = await auth.signInWithEmailAndPassword(profile.email, profile.password)
+            setProfile({
+                email: "",
+                password: ""
+            })
+        dispatch(setCurrentUser(signInedUser))                    
+        } catch (error) {
+          console.log(error);  
+        }
+
     }
     
     return (
