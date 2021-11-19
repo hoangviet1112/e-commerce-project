@@ -1,8 +1,32 @@
 import "../contactpage/ContactPage.scss"
 
 import React from 'react'
+import InputForm from "../../components/form-input/form-input"
+import { useState } from "react"
+import CustomButton from "../../components/custom-button/custom-button"
 
 const ContactPage = () => {
+    const [contactProfile, setContactProfile] = useState({
+        username: "",
+        email: "",
+        message: ""
+    })
+    
+    function handleChange(event) {
+        const {name, value} = event.target
+        setContactProfile(prevValue => {
+            return {
+                ...prevValue,
+                [name]: value
+            }
+        })
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault()
+        console.log(contactProfile);
+    }
+    
     return (
         <div className="contact-page">
             <div className="contact-information">
@@ -47,6 +71,12 @@ const ContactPage = () => {
                 <div className="letter-information">
                     <h2>Get in Touch</h2>
                     <p>Feel free to drop me a file below</p>
+                    <form onSubmit={handleSubmit}>
+                        <InputForm label="Your name" onChange={handleChange} name="username" type="text" value={contactProfile.username} />
+                        <InputForm label="Your email" onChange={handleChange} name="email" type="text" value={contactProfile.email} />
+                        <InputForm label="Your message" onChange={handleChange} name="message" type="text" value={contactProfile.message} />
+                        <CustomButton onSubmit={handleSubmit}>SEND</CustomButton>
+                    </form>
                 </div>
             </div>
         </div>
