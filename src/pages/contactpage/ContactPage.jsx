@@ -4,6 +4,8 @@ import React from 'react'
 import InputForm from "../../components/form-input/form-input"
 import { useState } from "react"
 import CustomButton from "../../components/custom-button/custom-button"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ContactPageFooter from "../../components/contact-page-footer/ContactPageFooter"
 
 const ContactPage = () => {
     const [contactProfile, setContactProfile] = useState({
@@ -28,57 +30,23 @@ const ContactPage = () => {
     }
     
     return (
-        <div className="contact-page">
-            <div className="contact-information">
-                <h2>CONTACT US</h2>
-                <div className="location">
-                    <span class="material-icons-outlined">
-                        location_on
-                    </span>
-                    <span>50 Le Thi Hong Gam</span>
+        <div>
+            <div className="contact-page">
+                <div className="contact-page-header">
+                    <h1>CONTACT US</h1>    
                 </div>
-                <div className="email">
-                    <span class="material-icons-outlined">
-                        mail
-                    </span>
-                    <span>nguyenduchoangviet@gmail.com</span>
-                </div>
-                <div className="yahoo">
-                    <span class="material-icons-outlined">
-                        contacts
-                    </span>
-                    <span>ABCXYZ</span>
-                </div>
-                <div className="phone">
-                    <span class="material-icons-outlined">
-                        phone
-                    </span>
-                    <span>0935882288</span>
-                </div>
-                <div className="contact-icon">
-                    <span class="material-icons-outlined">
-                        contact_page
-                    </span>
-                    <span class="material-icons-outlined">
-                        dialpad
-                    </span>
-                    <span class="material-icons-outlined">
-                        call_end
-                    </span>
+                <h3>Call For A Consultation at (+84) 935882288</h3>
+                <h3>Or Fill Out The Form Below</h3>
+                <div className="contact-page-information">
+                    <form className="contact-page-information-form" onSubmit={handleSubmit}> 
+                        <InputForm label="Username" name="username" type="text" onChange={handleChange} value={contactProfile.username} required/>
+                        <InputForm label="Email" name="email" type="email" onChange={handleChange} value={contactProfile.email} required />
+                        <textarea className="contact-page-information-message" rows="5"/>
+                        <CustomButton isInContactPage onClick={handleSubmit}>SEND</CustomButton>
+                    </form>        
                 </div>
             </div>
-            <div className="contact-letter">
-                <div className="letter-information">
-                    <h2>Get in Touch</h2>
-                    <p>Feel free to drop me a file below</p>
-                    <form onSubmit={handleSubmit}>
-                        <InputForm label="Your name" onChange={handleChange} name="username" type="text" value={contactProfile.username} />
-                        <InputForm label="Your email" onChange={handleChange} name="email" type="text" value={contactProfile.email} />
-                        <InputForm label="Your message" onChange={handleChange} name="message" type="text" value={contactProfile.message} />
-                        <CustomButton onSubmit={handleSubmit}>SEND</CustomButton>
-                    </form>
-                </div>
-            </div>
+            <ContactPageFooter />
         </div>
     )
 }

@@ -1,66 +1,49 @@
 .contact-page {
-    height: 100vh;
+    height: 85vh;
     width: 100vw;
     background-repeat: no-repeat;
     background-size: cover;
     background-image: url(https://assets.hongkiat.com/uploads/beautiful-minimalist-desktop-wallpapers/4k/original/01.jpg);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    
+    padding-top: 40px;
 
-    .contact-information {
-        background-color: blue;
-        height: 50%;
-        width: 20%;
-        position: absolute;
-        margin-right: 500px;
+    @media (min-height: 600px) {
+        min-height: 600px;
+    }
 
-        h2 {
-            color: white;
-            margin-left: 15px;
+    .contact-page-header {
+        display: flex;
+        flex-direction: column;
+        background-color: cadetblue;
+        min-width: 600px;
+        min-height: 100px;
+        align-items: center;
+    }
+
+    .contact-page-information {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        .form-input {
+            width: 600px;
         }
 
-        .location {
-            color: white;
-            font-size: 30px;
-
-            .material-icons-outlined {
-                font-size: 30px;
-                padding: 10px;
-            }
+        .contact-page-button {
+            margin: 20px auto;
         }
 
-        .phone, .yahoo, .email {
-            color: white;
-            font-size: 30px;
-            
-            .material-icons-outlined {
-                font-size: 30px;
-                padding: 10px;
-            }
-        }
-
-        .contact-icon {
-            padding: 20px;
-            color: white;
-
-            .material-icons-outlined {
-                font-size: 40px;
-                padding: 10px;
-            }
+        .contact-page-information-message {
+            width: 600px;
         }
     }
 
-    .contact-letter {
-        background-color: cadetblue;
-        width: 40%;
-        height: 60%;
-        display: flex;
-        
-        .letter-information {
-            position: absolute;
-            margin-left: 370px;
-        }
+    .contact-page-footer {
+        background-color: white;
+        height: 200px;
+        width: 100vw;
     }
 }
