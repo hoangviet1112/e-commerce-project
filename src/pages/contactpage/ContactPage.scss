@@ -8,11 +8,7 @@
     flex-direction: column;
     align-items: center;
     padding-top: 40px;
-
-    @media (min-height: 600px) {
-        min-height: 600px;
-    }
-
+    
     .contact-page-header {
         display: flex;
         flex-direction: column;
