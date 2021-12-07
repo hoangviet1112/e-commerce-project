@@ -1,7 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
+import {persistStore} from "redux-persist"
 import rootReducer from "./root-reducer";
 
-const store = configureStore({
+export const store = configureStore({
   reducer: rootReducer,
   middleware: getDefaultMiddleware => getDefaultMiddleware({
     immutableCheck: false,
@@ -11,4 +12,5 @@ const store = configureStore({
   devTools: process.env.NODE_ENV !== 'production',
 });
 
-export default store;
+export const persistor = persistStore(store)
+

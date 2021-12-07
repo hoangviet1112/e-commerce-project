@@ -4,7 +4,6 @@ import React from 'react'
 import InputForm from "../../components/form-input/form-input"
 import { useState } from "react"
 import CustomButton from "../../components/custom-button/custom-button"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ContactPageFooter from "../../components/contact-page-footer/ContactPageFooter"
 
 const ContactPage = () => {
