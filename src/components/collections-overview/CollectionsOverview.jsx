@@ -2,12 +2,12 @@ import "../collections-overview/CollectionsOverview.scss"
 
 import React from 'react'
 import { useSelector } from "react-redux"
-import { selectShopItems } from "../../redux/shop/shop.selectors"
+import { selectCollectionForPreview } from "../../redux/shop/shop.selectors"
 import CollectionPreview from "../preview-collection/preview-collection"
 
 const CollectionsOverview = () => {
     const state = useSelector(state => state)
-    const collections = selectShopItems(state)
+    const collections = selectCollectionForPreview(state)
 
     return (
         <div className="collection-overview">
